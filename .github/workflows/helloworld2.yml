@@ -1,0 +1,13 @@
+name: hello-world2
+on: 
+  workflow_dispatch:
+  workflow_call:
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: my-step
+        run: echo "Hello World from branch hello-world2"
+      - name: my-step2
+        # set environment variable to be used in the next step
+        run: echo "hello=hello-world2" >> $GITHUB_ENV
