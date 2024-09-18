@@ -2,12 +2,27 @@ name: hello-world2
 on: 
   workflow_dispatch:
   workflow_call:
+    outputs:
+      # Map the workflow output(s) to job output(s)
+      reusable_output:
+        description: 'Output from the reusable workflow'
+        value: ${{ jobs.reusable-workflow-job.outputs.job_output }}
+
 jobs:
-  my-job:
+  reusable-workflow-job:
     runs-on: ubuntu-latest
+    outputs:
+      job_output: ${{ steps.process-step.outputs.step_output }}
     steps:
-      - name: my-step
-        run: echo "Hello World from branch hello-world2"
-      - name: my-step2
-        # set environment variable to be used in the next step
-        run: echo "hello=hello-world2" >> $GITHUB_ENV
+      # - name: my-step
+      #   run: echo "Hello World from branch hello-world2"
+      # - name: my-step2
+      #   # set environment variable to be used in the next step
+      #   run: echo "hello=hello-world2" >> $GITHUB_ENV
+      - name: Process reusable input
+        id: process-step
+        run: |
+          #echo "reusable_input=${{ inputs.reusable_input }}"
+          echo "HELLO_WORLD_SECRET=${HELLO_WORLD_SECRET}"
+          echo "step_output=hello-world2_processed" >> $GITHUB_OUTPUT          
+          echo "hello=hello-world2" >> $GITHUB_ENV

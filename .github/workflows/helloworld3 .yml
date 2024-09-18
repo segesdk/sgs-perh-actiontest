@@ -4,11 +4,7 @@ on:
 jobs:
   my-job:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-
     - name: Workflow
       uses: ./.github/workflows/hello-world2.yml
 
