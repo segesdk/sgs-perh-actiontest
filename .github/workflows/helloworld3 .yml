@@ -4,10 +4,15 @@ on:
 jobs:
   my-job:
     runs-on: ubuntu-latest
-    steps:
-      - uses: ./.github/workflows/hello-world2.yml
 
-      # List all github environment variables
-      - name: List all github envrioment variables
-        run: env | grep GITHUB_ENV
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Workflow
+      uses: ./.github/workflows/hello-world2.yml
+
+    # List all github environment variables
+    - name: List all github envrioment variables
+      run: env | grep GITHUB_ENV
               
