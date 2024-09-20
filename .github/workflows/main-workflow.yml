@@ -8,7 +8,7 @@ on:
 
 jobs:
   job1:
-    uses: segesdk/sgs-perhactiontest/.github/workflows/reusable-workflow.yml@main
+    uses: segesdk/sgs-perh-actiontest/.github/workflows/reusable-workflow.yml@main
 
   job2:
     runs-on: ubuntu-latest
