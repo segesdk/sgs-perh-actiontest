@@ -9,3 +9,12 @@ on:
 jobs:
   use-reusable-workflow:
     uses: segesdk/sgs-perh-actiontest/.github/workflows/reusable-workflow.yml@main
+    outputs:
+      hello-output: ${{ steps.use-reusable-workflow.outputs.hello-message }}
+
+  show-output:
+    runs-on: ubuntu-latest
+    needs: use-reusable-workflow
+    steps:
+      - name: Display Hello Output
+        run: echo "The reusable workflow said: ${{ needs.use-reusable-workflow.outputs.hello-message }}"
