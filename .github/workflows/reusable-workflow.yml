@@ -22,12 +22,12 @@ jobs:
     runs-on: ubuntu-latest
     # Map the job outputs to step outputs
     outputs:
-      output1: ${{ steps.step1.outputs.firstword }}
-      output2: ${{ steps.step2.outputs.secondword }}
+      output1: ${{ steps.step1.outputs.output1 }}
+      output2: ${{ steps.step2.outputs.output2 }}
     steps:
       - id: step0
         run: echo "${{ inputs.input1 }}"
       - id: step1
-        run: echo "firstword=hello" >> $GITHUB_OUTPUT
+        run: echo "output1=hello" >> $GITHUB_OUTPUT
       - id: step2
-        run: echo "secondword=world" >> $GITHUB_OUTPUT
+        run: echo "output2=world" >> $GITHUB_OUTPUT
