@@ -9,6 +9,8 @@ on:
 jobs:
   job1:
     uses: segesdk/sgs-perh-actiontest/.github/workflows/reusable-workflow.yml@main
+    with:
+      input1: "Hello, World!"
 
   job2:
     runs-on: ubuntu-latest
