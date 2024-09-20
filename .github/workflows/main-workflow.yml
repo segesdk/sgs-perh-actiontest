@@ -1,0 +1,11 @@
+# .github/workflows/main-workflow.yml
+name: Main Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  use-reusable-workflow:
+    uses: segesdk/sgs-perh-actiontest/.github/workflows/reusable-workflow.yml@main
